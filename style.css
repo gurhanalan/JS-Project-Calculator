@@ -1,16 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
-* {
-  box-sizing: border-box;
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
+html {
+    font-size: 62.5%;
+}
 body {
-  font-family: 'Roboto', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.calculator {
+    background-color: black;
+    height: 80rem;
+    width: 50rem;
+    border-radius: 5rem;
+    padding: 3rem;
+}
+
+.screen-box {
+    border: 2px solid crimson;
+    height: 20rem;
+    color: whitesmoke;
+    text-align: right;
+    padding: 1rem;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.screen-current {
+    font-size: 5rem;
 }
