@@ -18,8 +18,6 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    overflow: hidden;
-    margin: 0;
 }
 
 .calculator {
@@ -43,7 +41,7 @@ body {
 }
 
 .screen-current {
-    font-size: 5rem;
+    font-size: 7rem;
 }
 
 .buttons-box {
@@ -69,10 +67,34 @@ body {
     place-items: center; */
     text-align: center;
     line-height: 10rem;
+    cursor: pointer;
+}
+
+.btn-special {
+    background-color: rgb(219, 218, 218);
+    color: black;
+}
+.btn-operant {
+    background-color: rgb(202, 202, 50);
+}
+
+.btn:hover {
+    filter: brightness(120%);
+}
+
+.btn:focus,
+.btn:active {
+    filter: brightness(80%);
 }
 
 .btn-number-0 {
     grid-column: 1 / span 2;
     width: 21rem;
     border-radius: 5rem;
+}
+
+@media only screen and (max-width: 600px) {
+    html {
+        font-size: 40%;
+    }
 }
