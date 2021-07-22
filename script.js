@@ -34,12 +34,45 @@ const btnMinus = document.querySelector(".btn-minus");
 const btnMultiply = document.querySelector(".btn-multiply");
 const btnDivide = document.querySelector(".btn-divide");
 
+const btnOperants = document.querySelectorAll(".btn-operant");
 // Screens
 
 const screenCurrent = document.querySelector(".screen-current");
 const screenPrevious = document.querySelector(".screen-previous");
 
-// +++++++++++++ FUNCTIONS
+// Global Variables
 
+let currValue = "";
+let prevValue = "";
+let operant = undefined;
+
+// +++++++++++++ FUNCTIONS
+function display() {
+    screenCurrent.innerHTML = currValue;
+    screenPrevious.innerHTML = prevValue;
+}
+
+function calculations(sign) {
+    let result = 0;
+    switch (sign) {
+        case "+":
+            break;
+
+        default:
+            break;
+    }
+}
 // +++++++++++++ EVENT LISTENERS
-console.log(numsArr);
+
+for (let i = 0; i < numsArr.length; i++) {
+    numsArr[i].addEventListener("click", () => {
+        currValue = currValue + i;
+        display();
+    });
+}
+
+btnOperants.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        console.log(`${btn.innerHTML}`);
+    });
+});

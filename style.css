@@ -18,14 +18,19 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+
+    background-image: linear-gradient(135deg, #ee9ae5 10%, #5961f9 100%);
 }
 
 .calculator {
     background-color: black;
+    /* background-image: linear-gradient(135deg, #f0ff00 10%, #58cffb 100%); */
     height: 83rem;
     width: 50rem;
     border-radius: 5rem;
     padding: 3rem;
+
+    box-shadow: 0 3rem 4rem rgba(0, 0, 0, 0.247);
 }
 
 .screen-box {
@@ -94,6 +99,11 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+    html {
+        font-size: 40%;
+    }
+}
+@media only screen and (max-height: 800px) {
     html {
         font-size: 40%;
     }
