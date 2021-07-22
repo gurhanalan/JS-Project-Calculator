@@ -43,6 +43,7 @@ const screenPrevious = document.querySelector(".screen-previous");
 // Special Buttons
 const btnAc = document.querySelector(".btn-ac");
 const btnPlusMinus = document.querySelector(".btn-plusminus");
+const btnDelete = document.querySelector(".btn-delete");
 
 // Global Variables
 
@@ -97,6 +98,7 @@ function calculations(sign) {
 
     prevValue = prevValue + " " + currValue;
     currValue = result + "";
+    operant = undefined;
     display();
 }
 // +++++++++++++ EVENT LISTENERS
@@ -121,4 +123,13 @@ btnEqual.addEventListener("click", () => {
 
 btnAc.addEventListener("click", () => {
     clearDisplay();
+});
+btnDelete.addEventListener("click", () => {
+    currValue = currValue.slice(0, -1);
+    display();
+});
+btnPlusMinus.addEventListener("click", () => {
+    let result = parseFloat(currValue) * -1;
+    currValue = result + "";
+    display();
 });

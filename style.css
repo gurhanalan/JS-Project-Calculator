@@ -20,6 +20,8 @@ body {
     height: 100vh;
 
     background-image: linear-gradient(135deg, #ee9ae5 10%, #5961f9 100%);
+
+    user-select: none;
 }
 
 .calculator {
