@@ -79,7 +79,8 @@ body {
     background-color: rgb(219, 218, 218);
     color: black;
 }
-.btn-operant {
+.btn-operant,
+.btn-equal {
     background-color: rgb(202, 202, 50);
 }
 

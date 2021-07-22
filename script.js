@@ -40,6 +40,10 @@ const btnOperants = document.querySelectorAll(".btn-operant");
 const screenCurrent = document.querySelector(".screen-current");
 const screenPrevious = document.querySelector(".screen-previous");
 
+// Special Buttons
+const btnAc = document.querySelector(".btn-ac");
+const btnPlusMinus = document.querySelector(".btn-plusminus");
+
 // Global Variables
 
 let currValue = "";
@@ -52,27 +56,69 @@ function display() {
     screenPrevious.innerHTML = prevValue;
 }
 
+function clearDisplay() {
+    currValue = "";
+    prevValue = "";
+    operant = undefined;
+    display();
+}
+
+function append(num) {
+    currValue = currValue + num;
+    display();
+}
+
+function operants() {
+    prevValue = currValue + " " + operant;
+    currValue = "";
+
+    display();
+}
+
 function calculations(sign) {
     let result = 0;
     switch (sign) {
         case "+":
+            result = parseFloat(currValue) + parseFloat(prevValue);
+            break;
+        case "-":
+            result = parseFloat(prevValue) - parseFloat(currValue);
+            break;
+        case "x":
+            result = parseFloat(prevValue) * parseFloat(currValue);
+            break;
+        case "/":
+            result = parseFloat(prevValue) / parseFloat(currValue);
             break;
 
         default:
             break;
     }
+
+    prevValue = prevValue + " " + currValue;
+    currValue = result + "";
+    display();
 }
 // +++++++++++++ EVENT LISTENERS
 
 for (let i = 0; i < numsArr.length; i++) {
     numsArr[i].addEventListener("click", () => {
-        currValue = currValue + i;
-        display();
+        append(i);
     });
 }
 
 btnOperants.forEach((btn) => {
     btn.addEventListener("click", () => {
+        operant = btn.innerHTML;
+        operants();
         console.log(`${btn.innerHTML}`);
     });
+});
+
+btnEqual.addEventListener("click", () => {
+    calculations(operant);
+});
+
+btnAc.addEventListener("click", () => {
+    clearDisplay();
 });
