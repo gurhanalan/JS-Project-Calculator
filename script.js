@@ -49,22 +49,26 @@ const btnDelete = document.querySelector(".btn-delete");
 // Global Variables
 
 let currValue = "";
-let prevValue = "";
+let prevValueDisplay = ""; // used for display
+let prevValue = undefined; // used to store
 let operant = undefined;
 
 // +++++++++++++ FUNCTIONS
 function display() {
     if (currValue.length > 9) {
-        currValue = currValue.slice(0, 7) + "...";
+        screenCurrent.innerHTML = currValue.slice(0, 7) + "...";
+    } else if (currValue.length === 0) {
+        screenCurrent.innerHTML = currValue;
+    } else {
+        screenCurrent.innerHTML = Number(currValue).toLocaleString();
     }
-
-    screenCurrent.innerHTML = Number(currValue).toLocaleString();
-    screenPrevious.innerHTML = prevValue;
+    screenPrevious.innerHTML = prevValueDisplay;
 }
 
 function clearDisplay() {
     currValue = "";
     prevValue = "";
+    prevValueDisplay = "";
     operant = undefined;
     display();
 }
@@ -82,8 +86,8 @@ function append(num) {
 }
 
 function operants() {
-    prevValue = currValue + " " + operant;
-    // prevValue = Number(currValue).toLocaleString() + " " + operant;
+    prevValue = currValue;
+    prevValueDisplay = Number(currValue).toLocaleString() + " " + operant;
     currValue = "";
 
     display();
@@ -110,7 +114,8 @@ function calculations(sign) {
             break;
     }
 
-    prevValue = prevValue + " " + currValue;
+    prevValueDisplay =
+        prevValueDisplay + " " + Number(currValue).toLocaleString();
     currValue = result + "";
     operant = undefined;
     display();
