@@ -13,6 +13,7 @@ const btnNum6 = document.querySelector(".btn-number-6");
 const btnNum7 = document.querySelector(".btn-number-7");
 const btnNum8 = document.querySelector(".btn-number-8");
 const btnNum9 = document.querySelector(".btn-number-9");
+const btnComma = document.querySelector(".btn-number-comma");
 
 const numsArr = [
     btnNum0,
@@ -53,7 +54,11 @@ let operant = undefined;
 
 // +++++++++++++ FUNCTIONS
 function display() {
-    screenCurrent.innerHTML = currValue;
+    if (currValue.length > 9) {
+        currValue = currValue.slice(0, 7) + "...";
+    }
+
+    screenCurrent.innerHTML = Number(currValue).toLocaleString();
     screenPrevious.innerHTML = prevValue;
 }
 
@@ -65,18 +70,27 @@ function clearDisplay() {
 }
 
 function append(num) {
-    currValue = currValue + num;
+    // Prevent num to start with 0
+    if (currValue[0] === "0" && currValue[1] !== ".") {
+        currValue = currValue.slice(1);
+    }
+
+    if (currValue.length <= 8) {
+        currValue = currValue + num;
+    }
     display();
 }
 
 function operants() {
     prevValue = currValue + " " + operant;
+    // prevValue = Number(currValue).toLocaleString() + " " + operant;
     currValue = "";
 
     display();
 }
 
 function calculations(sign) {
+    if (!operant) return;
     let result = 0;
     switch (sign) {
         case "+":
@@ -131,5 +145,12 @@ btnDelete.addEventListener("click", () => {
 btnPlusMinus.addEventListener("click", () => {
     let result = parseFloat(currValue) * -1;
     currValue = result + "";
+    display();
+});
+
+btnComma.addEventListener("click", () => {
+    if (!currValue.includes(".")) {
+        currValue = currValue + ".";
+    }
     display();
 });
