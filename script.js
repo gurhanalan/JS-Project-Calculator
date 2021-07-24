@@ -130,9 +130,11 @@ for (let i = 0; i < numsArr.length; i++) {
 
 btnOperants.forEach((btn) => {
     btn.addEventListener("click", () => {
-        operant = btn.innerHTML;
-        operants();
-        console.log(`${btn.innerHTML}`);
+        if (!operant && currValue) {
+            operant = btn.innerHTML;
+            operants();
+        }
+        // console.log(`${btn.innerHTML}`);
     });
 });
 

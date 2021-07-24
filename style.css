@@ -45,6 +45,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+
+    word-break: break-all;
 }
 
 .screen-current {
